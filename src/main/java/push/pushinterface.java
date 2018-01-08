@@ -4,6 +4,12 @@ import java.util.Arrays;
 
 public class pushinterface {
     static {
+        System.loadLibrary("boost_system");
+        System.loadLibrary("event_core");
+        System.loadLibrary("boost_chrono");
+        System.loadLibrary("boost_thread");
+        System.loadLibrary("event");
+        System.loadLibrary("event_pthreads");
         System.loadLibrary("Push");
         System.loadLibrary("pushjava");
     }
