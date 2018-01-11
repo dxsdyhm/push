@@ -28,22 +28,25 @@ void vpushinitListner(const char* initcallback)
 	    mJvm->AttachCurrentThread((void **)&env, NULL);
 	    if(env != NULL)
 	    {
-	        jclass pushclass = env->FindClass(classpath);
-            if(pushclass==0){
-                printf("FindClass error:%s",classpath);
+	        //jclass pushclass = env->FindClass(classpath);
+            //if(pushclass==0){
+            //    printf("FindClass error:%s",classpath);
+            //    return;
+            //}
+            if(mClass==NULL){
+                printf("FindClass error:%s \n",classpath);
                 return;
             }
-            jmethodID listen = env->GetStaticMethodID(pushclass,"initListner","([B)V");
+            jmethodID listen = env->GetStaticMethodID(mClass,"initListner","([B)V");
             if(listen==0){
-                printf("GetMethodID error:%s",classpath);
+                printf("GetMethodID error:%s \n",mClass);
                 return;
             }
             jbyte *callbackstr=(jbyte*)initcallback;
             int len=sizeof(initcallback);
             jbyteArray jcallarray=env->NewByteArray(len);
             env->SetByteArrayRegion(jcallarray,0,len,callbackstr);
-            env->CallStaticVoidMethod(pushclass,listen,jcallarray);
-            printf("%s\n",initcallback);
+            env->CallStaticVoidMethod(mClass,listen,jcallarray);
 	    }
 	}
 	mJvm->DetachCurrentThread();
