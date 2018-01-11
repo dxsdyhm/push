@@ -1,4 +1,5 @@
 #include <jni.h>
+#include <string.h>
 #include <stdio.h>
 #include "listen.h"
 
@@ -43,7 +44,7 @@ void vpushinitListner(const char* initcallback)
                 return;
             }
             jbyte *callbackstr=(jbyte*)initcallback;
-            int len=sizeof(initcallback);
+            int len=strlen(initcallback);
             jbyteArray jcallarray=env->NewByteArray(len);
             env->SetByteArrayRegion(jcallarray,0,len,callbackstr);
             env->CallStaticVoidMethod(mClass,listen,jcallarray);
