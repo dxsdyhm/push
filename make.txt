@@ -2,3 +2,5 @@ gcc -shared -o libpushjava.so -L /home/dxsdyhm/IdeaProjects/push/jni -lPush list
 
 
 gcc -shared -o libpushjava.so -L /home/dxsdyhm/IdeaProjects/push/jni -lboost_chrono -levent_core -lboost_system -lboost_thread -levent -levent_pthreads -lPush listen.cpp cpushinterface.cpp push.cpp -fPIC -I"/home/dxsdyhm/Public/dxs/softer/jdk/jdk-9.0.1/include" -I"/home/dxsdyhm/Public/dxs/softer/jdk/jdk-9.0.1/include/linux" -I"home/dxsdyhm/IdeaProjects/push/jni"
+
+gcc -shared -o libpushjava.so -L /home/dxsdyhm/IdeaProjects/push/jni -lboost_chrono -levent_core -lboost_system -lboost_thread -levent -levent_pthreads -lPush listen.cpp cpushinterface.cpp push.cpp -fPIC -I"/home/dxsdyhm/Public/dxs/softer/java/jdk1.8.0_161/include" -I"/home/dxsdyhm/Public/dxs/softer/java/jdk1.8.0_161/include/linux" -I"/home/dxsdyhm/IdeaProjects/push/jni"
