@@ -48,6 +48,7 @@ void vpushinitListner(const char* initcallback)
             jbyteArray jcallarray=env->NewByteArray(len);
             env->SetByteArrayRegion(jcallarray,0,len,callbackstr);
             env->CallStaticVoidMethod(mClass,listen,jcallarray);
+            env->DeleteLocalRef(jcallarray);
 	    }
 	}
 	mJvm->DetachCurrentThread();
